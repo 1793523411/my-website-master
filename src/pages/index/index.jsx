@@ -1,55 +1,81 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable import/first */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
 import { Layout, Menu, Breadcrumb } from "antd";
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { TeamOutlined, UserOutlined } from "@ant-design/icons";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 import Imgstore from "../imgstore/";
-import Welcome from '../welcome/'
+import Welcome from "../welcome/";
 
-import './index.css'
+import "./index.css";
 
 export default function Index(props) {
   const [collapsed, setCollapsed] = useState(true);
-  const [level1,setLevel1] = useState("User")
-  const [level2,setLevel2] = useState("welcome")
+  const [level1, setLevel1] = useState("User");
+  const [level2, setLevel2] = useState("welcome");
 
   const onCollapse = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
 
+  useEffect(() => {
+    let key1 = localStorage.getItem("key1")
+    let key2 = localStorage.getItem("key2")
+    setLevel1(key1);
+    setLevel2(key2);
+    if (key2) {
+      props.history.push("/index/" + key2);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
   const handleSubMenu = (e) => {
-    console.log(e)
-    setLevel1(e.keyPath[1])
-    setLevel2(e.keyPath[0])
-    props.history.push('/index/'+e.key)
-  }
- 
+    console.log(e);
+    setLevel1(e.keyPath[1]);
+    setLevel2(e.keyPath[0]);
+    localStorage.setItem("key1", e.keyPath[1]);
+    localStorage.setItem("key2", e.keyPath[0]);
+    props.history.push("/index/" + e.key);
+  };
 
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} theme="light" >
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={onCollapse}
+          theme="light"
+        >
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={["welcome"]} mode="inline" theme="light">
-            <SubMenu key="User" icon={<UserOutlined />} title="User" onClick={handleSubMenu}>
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={["welcome"]}
+            mode="inline"
+            theme="light"
+          >
+            <SubMenu
+              key="User"
+              icon={<UserOutlined />}
+              title="User"
+              onClick={handleSubMenu}
+            >
               <Menu.Item key="welcome">首页</Menu.Item>
               <Menu.Item key="imgStore">图片存储</Menu.Item>
               <Menu.Item key="5">Alex</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team" onClick={handleSubMenu}>
+            <SubMenu
+              key="sub2"
+              icon={<TeamOutlined />}
+              title="Team"
+              onClick={handleSubMenu}
+            >
               <Menu.Item key="6">Team 1</Menu.Item>
               <Menu.Item key="8">Team 2</Menu.Item>
             </SubMenu>

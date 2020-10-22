@@ -9,7 +9,7 @@ const props = {
   accept:"image/*",
   multiple: true,
   showUploadList:false,
-  action: "http://localhost:3001/upload/",
+  action: "http://websitcosimg.ygjie.icu/upload/",
   onChange(info) {
     const { status } = info.file;
     if (status !== "uploading") {
