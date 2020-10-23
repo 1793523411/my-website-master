@@ -1,0 +1,19 @@
+.article-span{
+    padding: 2px;
+}
+.show-html{
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    font-size:16px;
+    min-height: 450px;
+    background-color: #ffffff;
+    overflow: auto;
+}
+.demo-loading{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 99;
+}

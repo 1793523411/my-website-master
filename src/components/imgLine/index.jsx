@@ -3,7 +3,6 @@ import { Divider } from "antd";
 import {
   EyeOutlined,
   EyeInvisibleOutlined,
-  SyncOutlined,
 } from "@ant-design/icons";
 
 export default function ImgLine(props) {

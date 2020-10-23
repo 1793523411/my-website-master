@@ -1,6 +1,6 @@
 import React from "react";
 
-import { List, message, Button, Spin, Divider, Popconfirm } from "antd";
+import { List, message, Button, Spin, Popconfirm } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 import axios from "../../utils/request";

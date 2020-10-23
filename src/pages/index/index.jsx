@@ -4,13 +4,15 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
 import { Layout, Menu, Breadcrumb } from "antd";
-import { TeamOutlined, UserOutlined } from "@ant-design/icons";
+import { BookOutlined, AppstoreOutlined } from "@ant-design/icons";
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 import Imgstore from "../imgstore/";
 import Welcome from "../welcome/";
+import AddArticle from '../addarticle'
+import ArticleList from '../articlelist'
 
 import "./index.css";
 
@@ -61,9 +63,9 @@ export default function Index(props) {
             theme="light"
           >
             <SubMenu
-              key="User"
-              icon={<UserOutlined />}
-              title="User"
+              key="store"
+              icon={<AppstoreOutlined />}
+              title="store"
               onClick={handleSubMenu}
             >
               <Menu.Item key="welcome">首页</Menu.Item>
@@ -71,13 +73,13 @@ export default function Index(props) {
               <Menu.Item key="5">Alex</Menu.Item>
             </SubMenu>
             <SubMenu
-              key="sub2"
-              icon={<TeamOutlined />}
-              title="Team"
+              key="Article"
+              icon={<BookOutlined />}
+              title="Article"
               onClick={handleSubMenu}
             >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
+              <Menu.Item key="addarticle">添加文章</Menu.Item>
+              <Menu.Item key="articlelist">管理文章</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -93,6 +95,8 @@ export default function Index(props) {
             >
               <Route path="/index/imgstore" exact component={Imgstore} />
               <Route path="/index/welcome" exact component={Welcome} />
+              <Route path="/index/addarticle" exact component={AddArticle} />
+              <Route path="/index/articlelist" exact component={ArticleList} />
               <Route path="/index/" exact component={Welcome} />
             </div>
           </Content>
