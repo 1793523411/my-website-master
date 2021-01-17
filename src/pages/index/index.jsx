@@ -13,6 +13,9 @@ import Imgstore from "../imgstore/";
 import Welcome from "../welcome/";
 import AddArticle from '../addarticle'
 import ArticleList from '../articlelist'
+import PersonNav from '../personNav'
+import PersonSwiper from '../personSwiper'
+import PersonHello from '../personHello'
 
 import "./index.css";
 
@@ -81,6 +84,16 @@ export default function Index(props) {
               <Menu.Item key="addarticle">添加文章</Menu.Item>
               <Menu.Item key="articlelist">管理文章</Menu.Item>
             </SubMenu>
+            <SubMenu
+              key="Person"
+              icon={<BookOutlined />}
+              title="EditorPerson"
+              onClick={handleSubMenu}
+            >
+              <Menu.Item key="personNav">顶部导航栏</Menu.Item>
+              <Menu.Item key="personSwiper">轮播页</Menu.Item>
+              <Menu.Item key="personHello">打招呼</Menu.Item>
+            </SubMenu>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -97,6 +110,9 @@ export default function Index(props) {
               <Route path="/index/welcome" exact component={Welcome} />
               <Route path="/index/addarticle" exact component={AddArticle} />
               <Route path="/index/articlelist" exact component={ArticleList} />
+              <Route path="/index/personNav" exact component={PersonNav} />
+              <Route path="/index/personSwiper" exact component={PersonSwiper} />
+              <Route path="/index/personHello" exact component={PersonHello} />
               <Route path="/index/" exact component={Welcome} />
             </div>
           </Content>

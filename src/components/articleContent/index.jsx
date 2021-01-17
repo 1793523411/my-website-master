@@ -3,9 +3,9 @@ import { Row, Col, Spin } from "antd";
 import { Input } from "antd";
 import marked from "marked";
 import hljs from "highlight.js";
-// import "highlight.js/styles/monokai-sublime.css";
+import "highlight.js/styles/monokai-sublime.css";
 // import "highlight.js/styles/atom-one-dark.css";
-import "highlight.js/styles/tomorrow.css";
+// import "highlight.js/styles/tomorrow.css";
 
 import "./index.css";
 const { TextArea } = Input;
